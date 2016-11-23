@@ -13,7 +13,7 @@ namespace WebApi.JsonModels
         {
             return new UserModel
             {
-                Url = url.Link(Config.UsersRoute, new { UserId = user.UserId }),
+                Url = url.Link(Config.UserRoute, new { id = user.UserId }),
                 UserId = user.UserId,
                 UserDisplayName = user.UserDisplayName,
                 UserCreationDate = user.UserCreationDate,
@@ -60,7 +60,6 @@ namespace WebApi.JsonModels
             return new SovaUserModel
             {
                 Url = url.Link(Config.SovaUserRoute, new { id = sovaUser.SovaUserId }),
-                SovaUserId = sovaUser.SovaUserId,
                 SovaUserCreationDate = sovaUser.SovaUserCreationDate
             };
         }
@@ -69,7 +68,6 @@ namespace WebApi.JsonModels
         {
             return new SovaUser
             {
-                SovaUserId = model.SovaUserId,
                 SovaUserCreationDate = model.SovaUserCreationDate
                 
             };

@@ -80,7 +80,7 @@ namespace DatabaseService
             modelBuilder.Entity<Answer>().Property(a => a.AnswerText).HasColumnName("answertext");
 
 
-            //The user table, mangler datetime
+            //The user table
             modelBuilder.Entity<User>().ToTable("user");
             modelBuilder.Entity<User>().Property(u => u.UserId).HasColumnName("userid");
             modelBuilder.Entity<User>().Property(u => u.UserDisplayName).HasColumnName("userdisplayname");
@@ -88,7 +88,7 @@ namespace DatabaseService
             modelBuilder.Entity<User>().Property(u => u.UserLocation).HasColumnName("userlocation");
             modelBuilder.Entity<User>().Property(u => u.UserAge).HasColumnName("userage");
 
-            //The question table, mangler datetime
+            //The question table
             modelBuilder.Entity<Question>().ToTable("question");
             modelBuilder.Entity<Question>().Property(q => q.QuestionId).HasColumnName("questionid");
             modelBuilder.Entity<Question>().Property(q => q.UserId).HasColumnName("userid");

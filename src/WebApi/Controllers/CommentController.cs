@@ -16,7 +16,7 @@ namespace WebApi.Controllers
         {
         }
 
-        // GET api/values
+        
         [HttpGet(Name = Config.CommentsRoute)]
         public IActionResult Get(int page = 0, int pagesize = Config.DefaultPageSize)
         {
@@ -38,7 +38,7 @@ namespace WebApi.Controllers
 
 
 
-        // GET api/values/5
+        
         [HttpGet("{id}", Name = Config.CommentRoute)]
         public IActionResult Get(int id)
         {
@@ -47,7 +47,7 @@ namespace WebApi.Controllers
             return Ok(ModelFactory.Map(comment, Url));
         }
 
-        // POST api/values
+        
         [HttpPost]
         public IActionResult Post([FromBody] CommentModel model)
         {
@@ -56,7 +56,7 @@ namespace WebApi.Controllers
             return Ok(ModelFactory.Map(comment, Url));
         }
 
-        // PUT api/values/5
+        
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] CommentModel model)
         {
@@ -69,7 +69,7 @@ namespace WebApi.Controllers
             return Ok();
         }
 
-        // DELETE api/values/5
+        
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
