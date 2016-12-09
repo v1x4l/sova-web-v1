@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using DomainModel;
 using Microsoft.EntityFrameworkCore;
 
+//killroy
+
 namespace DatabaseService
 {
     public class SovaContext : DbContext
