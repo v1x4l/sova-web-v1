@@ -26,7 +26,6 @@ namespace WebApi.JsonModels
         {
             return new User
             {
-                UserId = model.UserId,
                 UserDisplayName = model.UserDisplayName,
                 UserCreationDate = model.UserCreationDate,
                 UserLocation = model.UserLocation,
@@ -49,7 +48,6 @@ namespace WebApi.JsonModels
         {
             return new Topic
             {
-                TopicId = model.TopicId,
                 Frequency = model.Frequency,
                 TopicName = model.TopicName
             };
@@ -60,6 +58,7 @@ namespace WebApi.JsonModels
             return new SovaUserModel
             {
                 Url = url.Link(Config.SovaUserRoute, new { id = sovaUser.SovaUserId }),
+                SovaUserId = sovaUser.SovaUserId,
                 SovaUserCreationDate = sovaUser.SovaUserCreationDate
             };
         }
@@ -69,7 +68,7 @@ namespace WebApi.JsonModels
             return new SovaUser
             {
                 SovaUserCreationDate = model.SovaUserCreationDate
-                
+              
             };
         }
 
@@ -92,7 +91,6 @@ namespace WebApi.JsonModels
         {
             return new Question
             {
-                QuestionId = model.QuestionId,
                 UserId = model.UserId,
                 AcceptedAnswerId = model.AcceptedAnswerId,
                 QuestionCreationDate = model.QuestionCreationDate,
@@ -117,7 +115,6 @@ namespace WebApi.JsonModels
         {
             return new PostTopic
             {
-                IdPostTopic = model.IdPostTopic,
                 PostId = model.PostId,
                 TopicId = model.TopicId
             };
@@ -140,7 +137,6 @@ namespace WebApi.JsonModels
         {
             return new Marked
             {
-                MarkedId = model.MarkedId,
                 PostId = model.PostId,
                 Note = model.Note,
                 Date = model.Date
@@ -163,7 +159,6 @@ namespace WebApi.JsonModels
         {
             return new History
             {
-                HistoryId = model.HistoryId,
                 SovaUserId = model.SovaUserId,
                 SearchText = model.SearchText,
                 SearchDate = model.SearchDate
@@ -189,7 +184,6 @@ namespace WebApi.JsonModels
         {
             return new Comment
             {
-                CommentId = model.CommentId,
                 PostId = model.PostId,
                 UserId = model.UserId,
                 CommentText = model.CommentText,
@@ -217,7 +211,6 @@ namespace WebApi.JsonModels
         {
             return new Answer
             {
-                AnswerId = model.AnswerId,
                 UserId = model.UserId,
                 ParentId = model.ParentId,
                 AnswerCreationDate = model.AnswerCreationDate,
