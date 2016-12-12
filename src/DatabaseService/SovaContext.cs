@@ -106,7 +106,7 @@ namespace DatabaseService
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;database=sova;uid=root;pwd=password");
+            optionsBuilder.UseMySql("server=localhost;database=sova;uid=root;pwd=saldohenning");
             base.OnConfiguring(optionsBuilder);
         }
     }

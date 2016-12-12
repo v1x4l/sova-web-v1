@@ -28,6 +28,7 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddMvc();
             services.AddSingleton<IDataService<User>, UserDataService>();
             services.AddSingleton<IDataService<Answer>, AnswerDataService>();
@@ -43,6 +44,13 @@ namespace WebApi
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseCors(builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod());
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
