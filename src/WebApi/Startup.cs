@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using DomainModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApi
 {
@@ -30,6 +31,7 @@ namespace WebApi
         {
             services.AddCors();
             services.AddMvc();
+            services.AddDbContext<SovaContext>(options => options.UseMySql("server=localhost;database=sova;uid=root;pwd=password"));
             services.AddSingleton<IDataService<User>, UserDataService>();
             services.AddSingleton<IDataService<Answer>, AnswerDataService>();
             services.AddSingleton<IDataService<Comment>, CommentDataService>();

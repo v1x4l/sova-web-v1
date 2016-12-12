@@ -9,6 +9,26 @@ namespace WebApi.JsonModels
 {
     public class ModelFactory
     {
+        public static SovaUserModel Map(SovaUser sovaUser, IUrlHelper url)
+        {
+            return new SovaUserModel
+            {
+                Url = url.Link(Config.SovaUserRoute, new { id = sovaUser.SovaUserId }),
+                SovaUserId = sovaUser.SovaUserId,
+                SovaUserCreationDate = sovaUser.SovaUserCreationDate
+            };
+
+        }
+
+        public static SovaUser Map(SovaUserModel model)
+        {
+            return new SovaUser
+            {
+                SovaUserCreationDate = model.SovaUserCreationDate
+
+            };
+        }
+
         public static UserModel Map(User user, IUrlHelper url)
         {
             return new UserModel
@@ -44,31 +64,13 @@ namespace WebApi.JsonModels
             };
         }
 
+       
         public static Topic Map(TopicModel model)
         {
             return new Topic
             {
                 Frequency = model.Frequency,
                 TopicName = model.TopicName
-            };
-        }
-
-        public static SovaUserModel Map(SovaUser sovaUser, IUrlHelper url)
-        {
-            return new SovaUserModel
-            {
-                Url = url.Link(Config.SovaUserRoute, new { id = sovaUser.SovaUserId }),
-                SovaUserId = sovaUser.SovaUserId,
-                SovaUserCreationDate = sovaUser.SovaUserCreationDate
-            };
-        }
-
-        public static SovaUser Map(SovaUserModel model)
-        {
-            return new SovaUser
-            {
-                SovaUserCreationDate = model.SovaUserCreationDate
-              
             };
         }
 

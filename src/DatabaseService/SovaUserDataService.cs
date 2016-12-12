@@ -10,73 +10,72 @@ namespace DatabaseService
 {
     public class SovaUserDataService : IDataService<SovaUser>
     {
-        public void Add(SovaUser someDbObject)
-        {
-            using (var db = new SovaContext())
+    
+        SovaContext db;
+
+        public SovaUserDataService(SovaContext db){
+        this.db = db;
+    }
+
+    public void Add(SovaUser someDbObject)
+    {
+            try
             {
                 someDbObject.SovaUserId = db.SovaUsers.Max(su => su.SovaUserId) + 1;
-                db.Add(someDbObject);
-                db.SaveChanges();
             }
-        }
+            catch {
+                someDbObject.SovaUserId = 1;
+             }
+            
+            db.Add(someDbObject);
+            db.SaveChanges();
+    }
 
-        public int Count()
+    public int Count()
+    {
+        return db.SovaUsers.Count();
+    }
+
+    public bool Delete(int id)
+    {
+        var sovaUser = db.SovaUsers.FirstOrDefault(su => su.SovaUserId == id);
+        if (sovaUser == null)
         {
-            using (var db = new SovaContext())
-            {
-                return db.SovaUsers.Count();
-            }
+            return false;
         }
+        db.Remove(sovaUser);
+        return db.SaveChanges() > 0;
+    }
 
-        public bool Delete(int id)
+    public SovaUser Get(int id)
+    {
+        return db.SovaUsers.FirstOrDefault(su => su.SovaUserId == id);
+    }
+
+    public IList<SovaUser> GetList(int page, int pageSize)
+    {
+        return
+            db.SovaUsers
+            .OrderBy(su => su.SovaUserId)
+            .Skip(page * pageSize)
+            .Take(pageSize)
+            .ToList();
+    }
+
+    public bool Update(SovaUser someDbObject)
+    {
+        try
         {
-            using (var db = new SovaContext())
-            {
-                var sovaUser = db.SovaUsers.FirstOrDefault(su => su.SovaUserId == id);
-                if (sovaUser == null)
-                {
-                    return false;
-                }
-                db.Remove(sovaUser);
-                return db.SaveChanges() > 0;
-            }
+            db.Attach(someDbObject);
+            db.Entry(someDbObject).State = EntityState.Modified;
+            return db.SaveChanges() > 0;
         }
-
-        public SovaUser Get(int id)
+        catch (DbUpdateConcurrencyException)
         {
-            using (var db = new SovaContext())
-            {
-                return db.SovaUsers.FirstOrDefault(su => su.SovaUserId == id);
-            }
+            return false;
         }
 
-        public IList<SovaUser> GetList(int page, int pageSize)
-        {
-            using (var db = new SovaContext())
-            {
-                return
-                    db.SovaUsers
-                    .OrderBy(su => su.SovaUserId)
-                    .Skip(page * pageSize)
-                    .Take(pageSize)
-                    .ToList();
-            }
-        }
-
-        public bool Update(SovaUser someDbObject)
-        {
-            using (var db = new SovaContext())
-
-                try
-                {
-                    db.Attach(someDbObject);
-                    db.Entry(someDbObject).State = EntityState.Modified;
-                    return db.SaveChanges() > 0;
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    return false;
-                }
-        }
     }
 }
+}
+

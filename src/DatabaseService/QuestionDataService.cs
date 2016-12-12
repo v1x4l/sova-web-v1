@@ -10,28 +10,26 @@ namespace DatabaseService
 {
     public class QuestionDataService : IDataService<Question>
     {
+        SovaContext db;
+
+        public QuestionDataService(SovaContext db) {
+            this.db = db;
+        }
+
         public void Add(Question someDbObject)
         {
-            using (var db = new SovaContext())
-            {
                 someDbObject.QuestionId = db.Questions.Max(q => q.QuestionId) + 1;
                 db.Add(someDbObject);
                 db.SaveChanges();
-            }
         }
 
         public int Count()
         {
-            using (var db = new SovaContext())
-            {
                 return db.Questions.Count();
-            }
         }
 
         public bool Delete(int id)
         {
-            using (var db = new SovaContext())
-            {
                 var question = db.Questions.FirstOrDefault(q => q.QuestionId == id);
                 if (question == null)
                 {
@@ -39,34 +37,26 @@ namespace DatabaseService
                 }
                 db.Remove(question);
                 return db.SaveChanges() > 0;
-            }
         }
 
         public Question Get(int id)
         {
-            using (var db = new SovaContext())
-            {
                 return db.Questions.FirstOrDefault(q => q.QuestionId == id);
-            }
         }
 
         public IList<Question> GetList(int page, int pageSize)
         {
-            using (var db = new SovaContext())
-            {
                 return
                     db.Questions
                     .OrderBy(m => m.QuestionId)
                     .Skip(page * pageSize)
                     .Take(pageSize)
                     .ToList();
-            }
         }
 
         public bool Update(Question someDbObject)
         {
-            using (var db = new SovaContext())
-
+        
                 try
                 {
                     db.Attach(someDbObject);

@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 using DomainModel;
 using Microsoft.EntityFrameworkCore;
 
-//killroy
-
 namespace DatabaseService
 {
     public class SovaContext : DbContext
     {
+
+        public SovaContext() { }
+        public SovaContext(DbContextOptions<SovaContext> options)
+        : base(options)
+        { }
+
         public DbSet<History> Histories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Question> Questions { get; set; }
@@ -101,13 +105,6 @@ namespace DatabaseService
             modelBuilder.Entity<Question>().Property(q => q.QuestionTitle).HasColumnName("questiontitle");
 
             base.OnModelCreating(modelBuilder);
-        }
-
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySql("server=localhost;database=sova;uid=root;pwd=password");
-            base.OnConfiguring(optionsBuilder);
         }
     }
 }
