@@ -15,13 +15,20 @@ namespace DatabaseService
 
         public SovaUserDataService(SovaContext db){
         this.db = db;
-        }
+    }
 
     public void Add(SovaUser someDbObject)
     {
-        someDbObject.SovaUserId = db.SovaUsers.Max(su => su.SovaUserId) + 1;
-        db.Add(someDbObject);
-        db.SaveChanges();
+            try
+            {
+                someDbObject.SovaUserId = db.SovaUsers.Max(su => su.SovaUserId) + 1;
+            }
+            catch {
+                someDbObject.SovaUserId = 1;
+             }
+            
+            db.Add(someDbObject);
+            db.SaveChanges();
     }
 
     public int Count()
