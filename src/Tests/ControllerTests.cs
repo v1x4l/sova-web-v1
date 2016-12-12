@@ -13,9 +13,9 @@ using Newtonsoft.Json;
 
 namespace MockingExample
 {
+
     public class ControllerTests
     {
-        //UnitOfWork__StateUnderTest__ExpectedBehavior
         [Fact]
         public void GetSovaUsersShouldReturnOkObjectResult()
         {
@@ -54,21 +54,45 @@ namespace MockingExample
 
 
         [Fact]
-        public void PostShouldDoSomething()
+        public void PostShouldDoAddNewObjectAndReturnOk()
         {
-            var sovaUser = new SovaUser { SovaUserId = 0, SovaUserCreationDate = DateTime.Now };
-            var sovaUserModel = new SovaUserModel { SovaUserId = 0, SovaUserCreationDate = sovaUser.SovaUserCreationDate };
-            var dataServiceMock = new Mock<IDataService<SovaUser>>();
-            dataServiceMock.Setup(su => su.Add(sovaUser));
             //arrange
+            DateTime currentDateTime = DateTime.Now;
+            var sovaUserPost = new SovaUserModel { SovaUserCreationDate = currentDateTime };
+
+            var dataServiceMock = new Mock<IDataService<SovaUser>>();
+            dataServiceMock.Setup(su => su.Add(It.IsAny<SovaUser>()));
+
             var controller = new SovaUserController(dataServiceMock.Object);
-            var postSovaUser = controller.Post(sovaUserModel);
+            controller.Url = Mock.Of<IUrlHelper>(x => x.IsLocalUrl(It.IsAny<string>()) == false);
+            
             //act
-            Assert.IsType<OkResult>(postSovaUser);
+            var postSovaUser = controller.Post(sovaUserPost);
+
             //assert
-            dataServiceMock.Verify(su => su.Add(sovaUser), Times.Once);
+            var returnsRightObject = Assert.IsType<OkObjectResult>(postSovaUser);
+            dataServiceMock.Verify(su => su.Add(It.IsAny<SovaUser>()));
         }
 
+        [Fact]
+        public void PutShouldUpdateObjectAndReturnOk()
+        {
+            //arrange
+            DateTime currentDateTime = DateTime.Now;
+            var sovaUserPut = new SovaUserModel { SovaUserCreationDate = currentDateTime };
+            var dataServiceMock = new Mock<IDataService<SovaUser>>();
+            dataServiceMock.Setup(su => su.Update(It.IsAny<SovaUser>())).Returns(true);
+            var controller = new SovaUserController(dataServiceMock.Object);
+
+            controller.Url = Mock.Of<IUrlHelper>(x => x.IsLocalUrl(It.IsAny<string>()) == false);
+            
+            //act
+            var putSovaUser = controller.Put(666,sovaUserPut);
+
+            //assert
+            var returnsRightObject = Assert.IsType<OkResult>(putSovaUser);
+            dataServiceMock.Verify(su => su.Update(It.IsAny<SovaUser>()), Times.Once);
+        }
 
 
     }
