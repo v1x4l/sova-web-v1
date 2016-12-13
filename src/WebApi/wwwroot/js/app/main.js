@@ -30,6 +30,11 @@
             template: { require: 'text!app/components/recentSearches/recentSearchesView.html' }
         });
 
+        ko.components.register("saved-posts", {
+            viewModel: { require: 'app/components/savedPosts/savedPosts' },
+            template: { require: 'text!app/components/savedPosts/savedPostsView.html' }
+        });
+
         ko.components.register("person-list", {
             viewModel: { require: 'app/components/person/personlist' },
             template: { require: 'text!app/components/person/personListView.html' }
