@@ -25,9 +25,9 @@
             template: { require: 'text!app/components/app/appView.html' }
         });
 
-        ko.components.register("mypage", {
-            viewModel: { require: 'app/components/mypage/mypage' },
-            template: { require: 'text!app/components/mypage/mypageView.html' }
+        ko.components.register("recent-searches", {
+            viewModel: { require: 'app/components/recentSearches/recentSearches' },
+            template: { require: 'text!app/components/recentSearches/recentSearchesView.html' }
         });
 
         ko.components.register("person-list", {
