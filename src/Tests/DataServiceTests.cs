@@ -17,12 +17,12 @@ namespace Tests
     public class DataServiceTests
     {
         [Fact]
-        public void Add_sovausers_to_database()
+        public void AddSovaUsersToDatabase()
         {
             DateTime now = DateTime.Now;
             var sovaUser = new SovaUser {SovaUserCreationDate = now };
             var options = new DbContextOptionsBuilder<SovaContext>()
-                .UseInMemoryDatabase(databaseName: "Add_sovausers_to_database")
+                .UseInMemoryDatabase(databaseName: "AddSovausersToDatabase")
                 .Options;
 
             // Run the test against one instance of the context
@@ -49,7 +49,7 @@ namespace Tests
             DateTime now = DateTime.Now;
             var sovaUser = new SovaUser { SovaUserCreationDate = now };
             var options = new DbContextOptionsBuilder<SovaContext>()
-                .UseInMemoryDatabase(databaseName: "Remove_sovausers_to_database")
+                .UseInMemoryDatabase(databaseName: "RemoveSovausersFromDatabase")
                 .Options;
 
             // Run the test against one instance of the context
@@ -70,11 +70,11 @@ namespace Tests
         }
 
         [Fact]
-        public void Update_sovausers() {
+        public void UpdateSovausers() {
             DateTime now = DateTime.Now;
             var sovaUser = new SovaUser { SovaUserCreationDate = now };
             var options = new DbContextOptionsBuilder<SovaContext>()
-                .UseInMemoryDatabase(databaseName: "update_sova")
+                .UseInMemoryDatabase(databaseName: "UpdateSovausers")
                 .Options;
 
             using (var context = new SovaContext(options))
@@ -94,6 +94,66 @@ namespace Tests
             }
         }
 
+        [Fact]
+        public void GetSingleSovauser()
+        {
+            DateTime now = DateTime.Now;
+            SovaUser retrievedSovaUser;
+            SovaUser sovaUser = new SovaUser { SovaUserCreationDate = now };
+            var options = new DbContextOptionsBuilder<SovaContext>()
+                .UseInMemoryDatabase(databaseName: "GetSingleSovauser")
+                .Options;
+
+            using (var context = new SovaContext(options))
+            {
+                var service = new SovaUserDataService(context);
+                service.Add(sovaUser);
+                retrievedSovaUser = service.Get(1);
+            }
+
+            // Use a separate instance of the context to verify correct data was saved to database
+            using (var context = new SovaContext(options))
+            {
+                Assert.NotNull(retrievedSovaUser);
+                Assert.Equal(sovaUser.SovaUserCreationDate, context.SovaUsers.Single().SovaUserCreationDate);
+                
+            }
+        }
+
+        [Fact]
+        public void GetListOfSovaUsers()
+        {
+            DateTime now = DateTime.Now;
+            int AmountOfRetrievedSovaUsers = 5;
+            IList<SovaUser> retrievedSovaUser;
+            SovaUser sovaUser = new SovaUser { SovaUserCreationDate = now };
+            var options = new DbContextOptionsBuilder<SovaContext>()
+                .UseInMemoryDatabase(databaseName: "GetListOfSovausers")
+                .Options;
+
+            using (var context = new SovaContext(options))
+            {
+                var service = new SovaUserDataService(context);
+                service.Add(sovaUser);
+                now = DateTime.Now;
+                service.Add(sovaUser);
+                now = DateTime.Now;
+                service.Add(sovaUser);
+                now = DateTime.Now;
+                service.Add(sovaUser);
+                now = DateTime.Now;
+                service.Add(sovaUser);
+                retrievedSovaUser = service.GetList(0, AmountOfRetrievedSovaUsers);
+            }
+
+            // Use a separate instance of the context to verify correct data was saved to database
+            using (var context = new SovaContext(options))
+            {
+                Assert.NotNull(retrievedSovaUser);
+                Assert.NotEmpty(retrievedSovaUser);
+                Assert.IsType<List<SovaUser>>(retrievedSovaUser);
+                Assert.Equal(AmountOfRetrievedSovaUsers, retrievedSovaUser.Count());
+            }
+        }
     }
-    
 }
