@@ -25,9 +25,19 @@
             template: { require: 'text!app/components/app/appView.html' }
         });
 
-        ko.components.register("mypage", {
-            viewModel: { require: 'app/components/mypage/mypage' },
-            template: { require: 'text!app/components/mypage/mypageView.html' }
+        ko.components.register("result-box", {
+            viewModel: { require: 'app/components/searchPage/resultBox' },
+            template: { require: 'text!app/components/searchPage/resultBoxView.html' }
+        });
+
+        ko.components.register("recent-searches", {
+            viewModel: { require: 'app/components/recentSearches/recentSearches' },
+            template: { require: 'text!app/components/recentSearches/recentSearchesView.html' }
+        });
+
+        ko.components.register("saved-posts", {
+            viewModel: { require: 'app/components/savedPosts/savedPosts' },
+            template: { require: 'text!app/components/savedPosts/savedPostsView.html' }
         });
 
         ko.components.register("person-list", {
