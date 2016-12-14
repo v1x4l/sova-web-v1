@@ -1,10 +1,5 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<ol class="list-group" data-bind="foreach: marked">
+    <li class="list-group-item" data-bind="text: note, value: postId"></li>
+</ol>
 
-</body>
-</html>
+<a href="#" data-bind="click: goToPersons">Persons</a>

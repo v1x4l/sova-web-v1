@@ -38,7 +38,7 @@
     }
 
     var getMarked = function (callback) {
-        var url = "http://localhost:51234/api/marked"
+        var url = "http://localhost:51234/api/markeds"
         $.getJSON(url, function (data) {
             callback(data)
         })
