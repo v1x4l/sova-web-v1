@@ -53,6 +53,11 @@ namespace DatabaseService
                     .ToList();
         }
 
+        public IList<PostTopic> GetProcedureList(int page, int pageSize, string word1, string word2, string word3)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Update(PostTopic someDbObject)
         {
          

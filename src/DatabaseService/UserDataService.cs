@@ -67,5 +67,10 @@ namespace DatabaseService
         {
                 return db.Users.Count();
         }
+
+        public IList<User> GetProcedureList(int page, int pageSize, string word1, string word2, string word3)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

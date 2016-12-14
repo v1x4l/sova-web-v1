@@ -35,8 +35,6 @@ namespace WebApi.Controllers
         }
 
 
-
-
         [HttpGet("{id}", Name = Config.SovaUserRoute)]
         public IActionResult Get(int id)
         {

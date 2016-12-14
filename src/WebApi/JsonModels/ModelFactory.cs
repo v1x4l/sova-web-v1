@@ -29,6 +29,29 @@ namespace WebApi.JsonModels
             };
         }
 
+        public static SearchResultModel Map(SearchResult searchResult, IUrlHelper url)
+        {
+            return new SearchResultModel
+            {
+                Url = url.Link(Config.SearchResultRoute, new { id = searchResult.PostId }),
+                PostId = searchResult.PostId,
+                PostText = searchResult.PostText,
+                Rank = searchResult.Rank
+                
+            };
+
+        }
+
+        public static SearchResult Map(SearchResultModel model)
+        {
+            return new SearchResult
+            {
+                PostId = model.PostId,
+                PostText = model.PostText,
+                Rank = model.Rank
+            };
+        }
+
         public static UserModel Map(User user, IUrlHelper url)
         {
             return new UserModel
