@@ -25,6 +25,11 @@
             template: { require: 'text!app/components/app/appView.html' }
         });
 
+        ko.components.register("result-box", {
+            viewModel: { require: 'app/components/searchPage/resultBox' },
+            template: { require: 'text!app/components/searchPage/resultBoxView.html' }
+        });
+
         ko.components.register("recent-searches", {
             viewModel: { require: 'app/components/recentSearches/recentSearches' },
             template: { require: 'text!app/components/recentSearches/recentSearchesView.html' }

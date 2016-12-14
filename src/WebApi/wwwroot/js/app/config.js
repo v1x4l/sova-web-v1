@@ -8,7 +8,7 @@
         menuItems: {
             mypage: "MyPage",
             persons: "Persons",
-            pets: "Pets"
+            search: "Search"
         }
     };
 });
