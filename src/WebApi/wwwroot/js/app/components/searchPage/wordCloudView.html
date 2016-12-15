@@ -1,3 +1,8 @@
-﻿<div style="border: 2px solid lightblue">
-     <h1>WordCloud</h1>
+﻿<div style="border: 2px solid lightblue" >
+    <ol class="list-group" data-bind="foreach: wordList">
+        <li class="list-group-item">
+            <span data-bind="text: frequency"></span>
+            <span data-bind="text: word"></span>
+        </li>
+    </ol>
 </div>
