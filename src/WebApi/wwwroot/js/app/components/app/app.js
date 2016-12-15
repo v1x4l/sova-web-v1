@@ -11,13 +11,13 @@
         var selectMenu = function (menu) {
             selectedMenu(menu);
             currentComponent(menu.component);
-        }
+        };
 
-        var isSelected = function(menu) {
+        var isSelected = function (menu) {
             return menu === selectedMenu();
-        }
+        };
 
-        postman.subscribe(config.events.changeMenu, function(title) {
+        postman.subscribe(config.events.changeMenu, function (title) {
             for (var i = 0; i < menuItems.length; i++) {
                 if (menuItems[i].title === title) {
                     selectMenu(menuItems[i]);
@@ -33,6 +33,6 @@
             currentComponent,
             selectMenu,
             isSelected
-        }
-    }
+        };
+    };
 });

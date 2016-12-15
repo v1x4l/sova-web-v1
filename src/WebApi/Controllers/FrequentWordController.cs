@@ -20,9 +20,9 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{search}&{qs}", Name = Config.FrequentWordsRoute)]
-        public IActionResult Get(string search, int page = 0, int pagesize = Config.DefaultPageSize)
+        public IActionResult Get(string search, bool qs, int page = 0, int pagesize = Config.DefaultPageSize)
         {
-            bool questionSearch = true;
+            bool questionSearch = qs;
             string w1, w2, w3;
             string[] searchWord = search.Split(new char[] { '_', '\t' }, StringSplitOptions.RemoveEmptyEntries);
             int totalSearchWords = searchWord.Length;

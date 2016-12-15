@@ -156,7 +156,7 @@ namespace Tests
             }
         }
         
-
+        /*
         [Fact]
         public void getListFromProcedure() {
             IList<SearchResult> searchResults;
@@ -177,7 +177,7 @@ namespace Tests
             }
             
           }
-
+          */
       
     }
 }
