@@ -156,7 +156,6 @@ namespace Tests
             }
         }
         
-        /*
         [Fact]
         public void getListFromProcedure() {
             IList<SearchResult> searchResults;
@@ -164,7 +163,7 @@ namespace Tests
             using (var context = new SovaContext())
             {
                 var service = new SearchResultDataService(context);
-                searchResults = service.GetProcedureList(0, 10, "Java", "java", "java");
+                searchResults = service.GetProcedureList(0, 10, "Java", "java", "java", true);
             }
 
             using (var context = new SovaContext())
@@ -177,7 +176,7 @@ namespace Tests
             }
             
           }
-          */
+          
       
     }
 }

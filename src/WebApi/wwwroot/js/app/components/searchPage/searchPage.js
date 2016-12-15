@@ -6,9 +6,10 @@
 
 
             
-            dataService.getSearchResults("java", "true", function (data) {
-                console.log(data);
-                //searchResults();
+            dataService.getSearchResults("java script function", "true", function (data) {
+                //console.log(data);
+                searchResults(data.searchResultList);
+                console.log(searchResults);
             });
             
 

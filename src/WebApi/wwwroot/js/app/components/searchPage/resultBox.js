@@ -3,7 +3,7 @@
         return function () {
             var questions = ko.observableArray([]);
 
-
+            
             dataService.getQuestions(function (data) {
                 questions(data.questionList);
             });
