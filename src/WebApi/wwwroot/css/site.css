@@ -1,4 +1,18 @@
 ﻿.selectedPerson {
     color: red;
 }
- 
+.row [class*="col-"]{
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}
+
+.row{
+  overflow: hidden; 
+}
+/*
+p {
+    line-height: 18px;
+    height: 54px;
+	overflow: hidden;
+}
+*/

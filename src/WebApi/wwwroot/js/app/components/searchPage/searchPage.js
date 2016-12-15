@@ -1,16 +1,19 @@
 ﻿define(['knockout', 'dataservice', 'postman', 'config'],
     function (ko, dataService, postman, config) {
         return function () {
-            var questions = ko.observableArray([]);
+            var searchResults = ko.observableArray([]);
 
 
-            dataService.getQuestions(function (data) {
-                questions(data.questionList);
+
+            /*
+            dataService.searchResults(function (data) {
+                
             });
+            */
 
-            
             return {
-                questions
+                searchResults
+
             };
         };
     });

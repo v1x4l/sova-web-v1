@@ -9,6 +9,7 @@
             "text": "lib/requirejs-text/text",
             "bootstrap": "lib/bootstrap/dist/js/bootstrap.min",
             "toastr": "lib/toastr/toastr.min",
+            "jqcloud": "lib/jqcloud-1.0.4",
 
             "dataservice": "app/services/dataService",
             "postman": "app/services/postman",
@@ -23,6 +24,16 @@
         ko.components.register("my-app", {
             viewModel: { require: 'app/components/app/app' },
             template: { require: 'text!app/components/app/appView.html' }
+        });
+
+        ko.components.register("word-cloud", {
+            viewModel: { require: 'app/components/searchPage/wordCloud' },
+            template: { require: 'text!app/components/searchPage/wordCloudView.html' }
+        });
+
+        ko.components.register("search-page", {
+            viewModel: { require: 'app/components/searchPage/searchPage' },
+            template: { require: 'text!app/components/searchPage/searchPageView.html' }
         });
 
         ko.components.register("result-box", {
