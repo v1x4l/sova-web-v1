@@ -1,7 +1,7 @@
 ﻿define(['knockout', 'postman', 'config'], function(ko, postman, config) {
     return function () {
         var menuItems = [
-            { title: config.menuItems.search, component: 'result-box' },
+            { title: config.menuItems.search, component: 'search-page' },
             { title: config.menuItems.mypage, component: 'recent-searches' },
             { title: config.menuItems.persons, component: 'person-list' }
         ];

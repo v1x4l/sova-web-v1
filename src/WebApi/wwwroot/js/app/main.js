@@ -25,6 +25,16 @@
             template: { require: 'text!app/components/app/appView.html' }
         });
 
+        ko.components.register("word-cloud", {
+            viewModel: { require: 'app/components/searchPage/wordCloud' },
+            template: { require: 'text!app/components/searchPage/wordCloudView.html' }
+        });
+
+        ko.components.register("search-page", {
+            viewModel: { require: 'app/components/searchPage/searchPage' },
+            template: { require: 'text!app/components/searchPage/searchPageView.html' }
+        });
+
         ko.components.register("result-box", {
             viewModel: { require: 'app/components/searchPage/resultBox' },
             template: { require: 'text!app/components/searchPage/resultBoxView.html' }

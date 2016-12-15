@@ -1,17 +1,21 @@
-﻿<div style="border: 5px solid grey" class="container-fluid" data-bind="with: questions()[0]">
-    <!--
-    <ol class="list-group" data-bind="foreach: questions">
-    <li class="list-group-item" data-bind="text: questionTitle"></li>
-    </ol>
-    
-    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-    -->
-
-    <div style="border: 2px solid green">
-        <div data-bind="text: questionTitle"></div>
+﻿<!-- col-lg-8 col-lg-offset-2 -->
+<div style="border: 5px solid grey" class="container-fluid col-lg-10 col-lg-offset-1" data-bind="with: questions()[0]">
+    <div class="row">
+        <div style="border: 2px solid yellow" class="text-left col-xs-2">
+            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+                Single toggle
+            </button>
+        </div>
+        <div style="border: 2px solid green" class="col-xs-10">
+            <h1 data-bind="text: questionTitle"></h1>
+        </div>
     </div>
-    <div >
-        <div data-bind="text: questionScore"></div>
+    <div class="row">
+        <div style="border: 2px solid red" class="col-xs-2 col-lg-2">
+            Score <span data-bind="text: questionScore"></span>
+        </div>
+        <div style="border: 2px solid purple" class="col-xs-12 col-lg-10">
+            <span data-bind="text: questionText"></span>
+        </div>
     </div>
-    
 </div>
