@@ -30,11 +30,16 @@ namespace DatabaseService
         public DbSet<PostTopic> PostTopics { get; set; }
         public DbSet<Marked> Markeds { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<FrequentWord> FrequentWord { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            //the frequent words procedure
+            modelBuilder.Entity<FrequentWord>().HasKey(t => new { t.Word, t.Frequency});
+
             //the search procedure
-            modelBuilder.Entity<SearchResult>().HasKey(t => new { t.PostId, t.PostText, t.Rank });
+            modelBuilder.Entity<SearchResult>().HasKey(t => new { t.PostId, t.PostTitle, t.PostText, t.PostScore, t.Rank });
 
             //history table
             modelBuilder.Entity<History>().ToTable("history");

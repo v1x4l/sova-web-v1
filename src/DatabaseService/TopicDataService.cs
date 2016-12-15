@@ -53,7 +53,7 @@ namespace DatabaseService
                     .ToList();
         }
 
-        public IList<Topic> GetProcedureList(int page, int pageSize, string word1, string word2, string word3)
+        public IList<Topic> GetProcedureList(int page, int pageSize, string word1, string word2, string word3, bool questionSearch)
         {
             throw new NotImplementedException();
         }

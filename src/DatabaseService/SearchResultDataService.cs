@@ -12,8 +12,6 @@ namespace DatabaseService
     {
         SovaContext db;
 
-        private int limitBy = 10; //total amount of searchResults
-
         public SearchResultDataService(SovaContext db) {
             this.db = db;
         }
@@ -23,25 +21,46 @@ namespace DatabaseService
             throw new NotImplementedException();
         }
 
-        public IList<SearchResult> GetProcedureList(int page, int pageSize, string word1, string word2, string word3)
+        public IList<SearchResult> GetProcedureList(int page, int pageSize, string word1, string word2, string word3, bool questionSearch)
         {
-
             List<SearchResult> results = new List<SearchResult>();
             using (SovaContext db = new SovaContext())
             {
-                var something = db.Set<SearchResult>()
-                    .FromSql("call advancedSearch({0},{1},{2})", new[] { word1, word2, word3 })
+                if (questionSearch) {
+                    var resultOfQuestionSearch = db.Set<SearchResult>()
+                    .FromSql("call questionSearch({0},{1},{2})", new[] { word1, word2, word3 })
                     .Skip(page * pageSize)
                     .Take(pageSize);
-                foreach (var data in something)
-                {
-                    SearchResult tmp = new SearchResult { };
-                    tmp.PostId = data.PostId;
-                    tmp.PostText = data.PostText;
-                    tmp.Rank = data.Rank;
-                    results.Add(tmp);
-                }
+                    foreach (var data in resultOfQuestionSearch)
+                    {
+                        SearchResult tmp = new SearchResult { };
+                        tmp.PostId = data.PostId;
+                        tmp.PostTitle = data.PostTitle;
+                        tmp.PostScore = data.PostScore;
+                        tmp.PostText = data.PostText;
+                        tmp.Rank = data.Rank;
+                        results.Add(tmp);
+                    }
 
+                }
+                else {
+                    var resultOfAnswerSearch = db.Set<SearchResult>()
+                    .FromSql("call answerSearch({0},{1},{2})", new[] { word1, word2, word3 })
+                    .Skip(page * pageSize)
+                    .Take(pageSize);
+
+                    foreach (var data in resultOfAnswerSearch)
+                    {
+                        SearchResult tmp = new SearchResult { };
+                        tmp.PostId = data.PostId;
+                        tmp.PostTitle = data.PostTitle;
+                        tmp.PostScore = data.PostScore;
+                        tmp.PostText = data.PostText;
+                        tmp.Rank = data.Rank;
+                        results.Add(tmp);
+                    }
+
+                }
                 return results;
             }
         }
@@ -49,15 +68,6 @@ namespace DatabaseService
         public int Count()
         {
             throw new NotImplementedException();
-            /*
-            if (db.SearchResults != null)
-            {
-                return db.SearchResults.Count();
-            }
-            else {
-                return 0;
-            }
-            */
         }
 
         public bool Delete(int id)

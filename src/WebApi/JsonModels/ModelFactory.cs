@@ -35,9 +35,11 @@ namespace WebApi.JsonModels
             {
                 Url = url.Link(Config.SearchResultRoute, new { id = searchResult.PostId }),
                 PostId = searchResult.PostId,
+                PostTitle = searchResult.PostTitle,
                 PostText = searchResult.PostText,
+                PostScore = searchResult.PostScore,
                 Rank = searchResult.Rank
-                
+
             };
 
         }
@@ -47,8 +49,31 @@ namespace WebApi.JsonModels
             return new SearchResult
             {
                 PostId = model.PostId,
+                PostTitle = model.PostTitle,
                 PostText = model.PostText,
+                PostScore = model.PostScore,
                 Rank = model.Rank
+            };
+        }
+
+        public static FrequentWordModel Map(FrequentWord frequentWord, IUrlHelper url)
+        {
+            return new FrequentWordModel
+            {
+                Url = url.Link(Config.FrequentWordRoute, new { id = frequentWord.Word }),
+                Word = frequentWord.Word,
+                Frequency = frequentWord.Frequency
+            };
+
+        }
+
+
+        public static FrequentWord Map(FrequentWordModel model)
+        {
+            return new FrequentWord
+            {
+                Word = model.Word,
+                Frequency = model.Frequency
             };
         }
 

@@ -10,6 +10,8 @@ namespace WebApi
         public const int DefaultPageSize = 20;
         public const string UserRoute = "UserRoute";
         public const string UsersRoute = "UsersRoute";
+        public const string FrequentWordRoute = "FrequentWordRoute";
+        public const string FrequentWordsRoute = "FrequentWordsRoute";
         public const string SearchResultRoute = "SearchResultRoute";
         public const string SearchResultsRoute = "SearchResultsRoute";
         public const string AnswerRoute = "AnswerRoute";

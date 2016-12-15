@@ -5,11 +5,18 @@ using System.Threading.Tasks;
 
 namespace DomainModel
 {
+    public class FrequentWord {
+        public string Word { get; set; }
+        public int Frequency { get; set; }
+    }
+
     public class SearchResult {
         //The postId will be referring to either a question or answer as is
         public int PostId { get; set; }
-        public double Rank { get; set; }
+        public string PostTitle { get; set; }
         public string PostText { get; set; }
+        public int PostScore { get; set; }
+        public double Rank { get; set; }
     }
 
     public class Comment

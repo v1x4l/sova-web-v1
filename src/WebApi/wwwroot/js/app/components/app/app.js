@@ -8,7 +8,7 @@
         var currentComponent = ko.observable();
         var selectedMenu = ko.observable();
 
-        var selectMenu = function(menu) {
+        var selectMenu = function (menu) {
             selectedMenu(menu);
             currentComponent(menu.component);
         }

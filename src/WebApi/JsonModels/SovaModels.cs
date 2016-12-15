@@ -5,13 +5,21 @@ using System.Threading.Tasks;
 
 namespace WebApi.JsonModels
 {
+    public class FrequentWordModel
+    {
+        public string Url { get; set; }
+        public string Word { get; set; }
+        public int Frequency { get; set; }
+    }
 
     public class SearchResultModel
     {
         public string Url { get; set; }
         public int PostId { get; set; }
-        public double Rank { get; set; }
+        public string PostTitle { get; set; }
         public string PostText { get; set; }
+        public int PostScore { get; set; }
+        public double Rank { get; set; }
     }
 
     public class CommentModel

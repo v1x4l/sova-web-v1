@@ -43,6 +43,7 @@ namespace WebApi
             services.AddSingleton<IDataService<Question>, QuestionDataService>();
             services.AddSingleton<IDataService<SovaUser>, SovaUserDataService>();
             services.AddSingleton<IDataService<SearchResult>, SearchResultDataService>();
+            services.AddSingleton<IDataService<FrequentWord>, FrequentWordDataService>();
 
         }
 
