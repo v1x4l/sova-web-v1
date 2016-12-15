@@ -5,13 +5,13 @@
 
 
 
-            
+            /*
             dataService.getSearchResults("java script function", "true", function (data) {
                 //console.log(data);
                 searchResults(data.searchResultList);
-                console.log(searchResults);
+                console.log(searchResults());
             });
-            
+            */
 
             return {
                 searchResults

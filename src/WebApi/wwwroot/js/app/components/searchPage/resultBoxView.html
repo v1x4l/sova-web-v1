@@ -1,19 +1,21 @@
 ﻿<!-- col-lg-8 col-lg-offset-2 -->
-<div style="border: 5px solid grey" class="container-fluid col-lg-10 col-lg-offset-1" data-bind="with: questions()">
-    <div class="row">
-        <button border: 2px solid yellow" class="btn btn-primary text-left col-xs-2">
-                Save Post
-        </button>
-        <div style="border: 2px solid green" class="col-xs-10">
-            <h1 data-bind="text: questionTitle"></h1>
+<div data-bind="foreach: searchResults">
+    <div style="border: 5px solid grey" class="container-fluid col-lg-10 col-lg-offset-1">
+        <div class="row">
+            <button border: 2px solid yellow" class="btn btn-primary text-left col-xs-2">
+                    Save Post
+            </button>
+            <div style="border: 2px solid green" class="col-xs-10">
+                <h1 data-bind="text: postTitle"></h1>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div style="border: 2px solid red" class="col-xs-2 col-lg-2">
-            Score <span data-bind="text: questionScore"></span>
-        </div>
-        <div style="border: 2px solid purple" class="col-xs-10 col-lg-10">
-            <p id="questionText" data-bind="text: questionText"></p>
+        <div class="row">
+            <div style="border: 2px solid red" class="col-xs-2 col-lg-2">
+                Score <span data-bind="text: postScore"></span>
+            </div>
+            <div style="border: 2px solid purple" class="col-xs-10 col-lg-10">
+                <p id="questionText" data-bind="text: postText"></p>
+            </div>
         </div>
     </div>
 </div>
