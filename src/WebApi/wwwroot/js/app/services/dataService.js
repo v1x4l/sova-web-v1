@@ -88,6 +88,16 @@
             callback(data)
         })
     }
+
+    var getWordList = function (_searchString, isQuestion, callback) {
+        //var _searchString = searchString.replace(/ /g, "_");
+        var searchString = _searchString.split(' ').join('_')
+        //var _isQuestion = isQuestion;
+        var url = "http://localhost:51234/api/frequentwords/" + searchString + "&" + isQuestion;
+        $.getJSON(url, function (data) {
+            callback(data)
+        })
+    }
     return {
         getPersons,
         getUsers,
@@ -99,6 +109,7 @@
         getQuestions,
         getSovaUser,
         getTopic,
+        getWordList,
         getSearchResults
     };
 });

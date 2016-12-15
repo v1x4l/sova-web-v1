@@ -32,7 +32,7 @@ namespace WebApi
         {
             services.AddCors();
             services.AddMvc();
-            services.AddDbContext<SovaContext>(options => options.UseMySql("server=localhost;database=sova;uid=root;pwd=saldohenning"));
+            services.AddDbContext<SovaContext>(options => options.UseMySql("server=localhost;database=sova;uid=root;pwd=password"));
             services.AddSingleton<IDataService<User>, UserDataService>();
             services.AddSingleton<IDataService<Answer>, AnswerDataService>();
             services.AddSingleton<IDataService<Comment>, CommentDataService>();
