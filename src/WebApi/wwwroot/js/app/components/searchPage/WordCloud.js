@@ -22,12 +22,9 @@
                 temp.sort(function (a, b) {
                     return parseFloat(b.frequency) - parseFloat(a.frequency);
                 });
-                console.log("sorted" + temp);
                 temp = temp.slice(0, 6);
-                console.log("sliced" + temp);
                 wordList(temp);
                 //wordList.push(temp.slice(0, 6));
-                console.log(wordList);
             });
             
 
