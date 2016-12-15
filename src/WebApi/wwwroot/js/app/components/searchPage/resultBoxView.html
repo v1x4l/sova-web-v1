@@ -1,11 +1,9 @@
 ﻿<!-- col-lg-8 col-lg-offset-2 -->
-<div style="border: 5px solid grey" class="container-fluid col-lg-10 col-lg-offset-1" data-bind="with: questions()[0]">
+<div style="border: 5px solid grey" class="container-fluid col-lg-10 col-lg-offset-1" data-bind="with: questions()">
     <div class="row">
-        <div style="border: 2px solid yellow" class="text-left col-xs-2">
-            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                Single toggle
-            </button>
-        </div>
+        <button border: 2px solid yellow" class="btn btn-primary text-left col-xs-2">
+                Save Post
+        </button>
         <div style="border: 2px solid green" class="col-xs-10">
             <h1 data-bind="text: questionTitle"></h1>
         </div>
@@ -14,7 +12,7 @@
         <div style="border: 2px solid red" class="col-xs-2 col-lg-2">
             Score <span data-bind="text: questionScore"></span>
         </div>
-        <div style="border: 2px solid purple" class="col-xs-12 col-lg-10">
+        <div style="border: 2px solid purple" class="col-xs-10 col-lg-10">
             <p id="questionText" data-bind="text: questionText"></p>
         </div>
     </div>
