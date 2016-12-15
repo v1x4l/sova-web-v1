@@ -12,11 +12,15 @@ namespace DatabaseService
     public class SovaContext : DbContext
     {
 
-        public SovaContext() { }
+        public SovaContext() {
+
+        }
+
         public SovaContext(DbContextOptions<SovaContext> options)
         : base(options)
         { }
 
+        public DbSet<SearchResult> SearchResults { get; set; }
         public DbSet<History> Histories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Question> Questions { get; set; }
@@ -29,6 +33,9 @@ namespace DatabaseService
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //the search procedure
+            modelBuilder.Entity<SearchResult>().HasKey(t => new { t.PostId, t.PostText, t.Rank });
+
             //history table
             modelBuilder.Entity<History>().ToTable("history");
             modelBuilder.Entity<History>().Property(h => h.SovaUserId).HasColumnName("sovauserid");
@@ -105,6 +112,14 @@ namespace DatabaseService
             modelBuilder.Entity<Question>().Property(q => q.QuestionTitle).HasColumnName("questiontitle");
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql("server=localhost;database=sova;uid=root;pwd=password");
+            }
         }
     }
 }

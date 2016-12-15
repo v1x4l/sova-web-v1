@@ -62,7 +62,12 @@ namespace DatabaseService
             .ToList();
     }
 
-    public bool Update(SovaUser someDbObject)
+        public IList<SovaUser> GetProcedureList(int page, int pageSize, string word1, string word2, string word3)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(SovaUser someDbObject)
     {
         try
         {

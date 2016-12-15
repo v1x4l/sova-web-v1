@@ -11,7 +11,7 @@ using WebApi.JsonModels;
 using DomainModel;
 using Newtonsoft.Json;
 
-namespace MockingExample
+namespace Tests
 {
 
     public class ControllerTests
@@ -65,7 +65,7 @@ namespace MockingExample
 
             var controller = new SovaUserController(dataServiceMock.Object);
             controller.Url = Mock.Of<IUrlHelper>(x => x.IsLocalUrl(It.IsAny<string>()) == false);
-            
+
             //act
             var postSovaUser = controller.Post(sovaUserPost);
 
@@ -85,16 +85,30 @@ namespace MockingExample
             var controller = new SovaUserController(dataServiceMock.Object);
 
             controller.Url = Mock.Of<IUrlHelper>(x => x.IsLocalUrl(It.IsAny<string>()) == false);
-            
+
             //act
-            var putSovaUser = controller.Put(666,sovaUserPut);
+            var putSovaUser = controller.Put(666, sovaUserPut);
 
             //assert
             var returnsRightObject = Assert.IsType<OkResult>(putSovaUser);
             dataServiceMock.Verify(su => su.Update(It.IsAny<SovaUser>()), Times.Once);
         }
 
+        [Fact]
+        public void GetSearchResultsShouldReturnOkObjectResult()
+        {
+            //arrange
+            var dataList = new List<SearchResult> { new SearchResult { PostId = 1, PostText = "some text, bla bla bla", Rank = 666 }, new SearchResult { PostId = 2, PostText = "some text, bla bla bla", Rank = 666 } };
+            var dataServiceMock = new Mock<IDataService<SearchResult>>();
+            dataServiceMock.Setup(sr => sr.GetProcedureList(0, 10, "java", "java", "java")).Returns(dataList);
+            var controller = new SearchResultController(dataServiceMock.Object);
+            //act
+            var getSearchList = controller.Get("java", 0, 10);
+            //assert
+            var rightObjectListType = Assert.IsType<OkObjectResult>(getSearchList);
+            dataServiceMock.Verify(sr => sr.GetProcedureList(0, 10, "java", "java", "java"), Times.Once);
+            Assert.NotNull(getSearchList);
+        }
 
     }
-
 }

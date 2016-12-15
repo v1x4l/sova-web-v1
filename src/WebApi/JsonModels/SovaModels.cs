@@ -5,6 +5,15 @@ using System.Threading.Tasks;
 
 namespace WebApi.JsonModels
 {
+
+    public class SearchResultModel
+    {
+        public string Url { get; set; }
+        public int PostId { get; set; }
+        public double Rank { get; set; }
+        public string PostText { get; set; }
+    }
+
     public class CommentModel
     {
         public string Url { get; set; }

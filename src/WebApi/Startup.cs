@@ -42,6 +42,7 @@ namespace WebApi
             services.AddSingleton<IDataService<PostTopic>, PostTopicDataService>();
             services.AddSingleton<IDataService<Question>, QuestionDataService>();
             services.AddSingleton<IDataService<SovaUser>, SovaUserDataService>();
+            services.AddSingleton<IDataService<SearchResult>, SearchResultDataService>();
 
         }
 

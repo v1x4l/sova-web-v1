@@ -9,6 +9,7 @@ namespace DatabaseService
     public interface IDataService<T>
     {
         IList<T> GetList(int page, int pagesize);
+        IList<T> GetProcedureList(int page, int pageSize, string word1, string word2, string word3);
         T Get(int id);
         void Add(T someDbObject);
         bool Update(T someDbObject);

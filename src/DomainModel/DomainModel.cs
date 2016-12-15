@@ -5,6 +5,12 @@ using System.Threading.Tasks;
 
 namespace DomainModel
 {
+    public class SearchResult {
+        //The postId will be referring to either a question or answer as is
+        public int PostId { get; set; }
+        public double Rank { get; set; }
+        public string PostText { get; set; }
+    }
 
     public class Comment
     {

@@ -155,5 +155,29 @@ namespace Tests
                 Assert.Equal(AmountOfRetrievedSovaUsers, retrievedSovaUser.Count());
             }
         }
+        
+
+        [Fact]
+        public void getListFromProcedure() {
+            IList<SearchResult> searchResults;
+
+            using (var context = new SovaContext())
+            {
+                var service = new SearchResultDataService(context);
+                searchResults = service.GetProcedureList(0, 10, "Java", "java", "java");
+            }
+
+            using (var context = new SovaContext())
+            {
+                Assert.NotNull(searchResults);
+                Assert.NotEmpty(searchResults);
+                Assert.IsType<List<SearchResult>>(searchResults);
+                Assert.Equal(489936, searchResults.First().PostId);
+                Assert.Equal(14633709, searchResults.Last().PostId);
+            }
+            
+          }
+
+      
     }
 }
