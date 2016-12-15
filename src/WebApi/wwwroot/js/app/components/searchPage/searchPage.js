@@ -5,11 +5,12 @@
 
 
 
-            /*
-            dataService.searchResults(function (data) {
-                
+            
+            dataService.getSearchResults("java", "true", function (data) {
+                console.log(data);
+                //searchResults();
             });
-            */
+            
 
             return {
                 searchResults

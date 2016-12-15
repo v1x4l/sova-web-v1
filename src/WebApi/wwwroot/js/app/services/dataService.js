@@ -79,6 +79,15 @@
             callback(data)
         })
     }
+
+    var getSearchResults = function(searchString, isQuestion, callback) {
+        var _searchString = searchString.replace(/ /g, "_");
+        //var _isQuestion = isQuestion;
+        var url = "http://localhost:51234/api/searchresults/" + _searchString + "&" + isQuestion;
+        $.getJSON(url, function (data) {
+            callback(data)
+        })
+    }
     return {
         getPersons,
         getUsers,
@@ -90,6 +99,7 @@
         getQuestions,
         getSovaUser,
         getTopic,
+        getSearchResults
     };
 });
 
