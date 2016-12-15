@@ -16,16 +16,22 @@
             }
 
             
-            dataService.getWordList("java", "true", function (data) {
-                var temp = [];
-                temp = data.frequentWordList;
-                temp.sort(function (a, b) {
-                    return parseFloat(b.frequency) - parseFloat(a.frequency);
+            
+            $("#myButton").click(function () {
+                var searchVal = $("#searchField").val();
+                var radioVal = $("input[name=questionsOrAnswers]:checked").val();
+
+                dataService.getWordList(searchVal, radioVal, function (data) {
+                    var temp = [];
+                    temp = data.frequentWordList;
+                    temp.sort(function (a, b) {
+                        return parseFloat(b.frequency) - parseFloat(a.frequency);
+                    });
+                    temp = temp.slice(0, 6);
+                    wordList(temp);
+                    //wordList.push(temp.slice(0, 6));
                 });
-                temp = temp.slice(0, 6);
-                wordList(temp);
-                //wordList.push(temp.slice(0, 6));
-            });
+                });
             
 
             return {

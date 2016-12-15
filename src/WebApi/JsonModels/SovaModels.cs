@@ -38,6 +38,7 @@ namespace WebApi.JsonModels
     {
         public string Url { get; set; }
         public int MarkedId { get; set; }
+        public int SovaUserId { get; set; }
         public int PostId { get; set; }
         public string Note { get; set; }
         public DateTime Date { get; set; }

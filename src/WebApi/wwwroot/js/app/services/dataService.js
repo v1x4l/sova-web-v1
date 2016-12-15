@@ -37,6 +37,26 @@
         })
     }
 
+    var postHistories = function (object) {
+        var url = "http://localhost:51234/api/historys";
+        console.log(object);
+        $.ajax({
+            type: 'post',
+            url: url,
+            data: JSON.stringify(object),
+            contentType: "application/json; charset=utf-8",
+            traditional: true,
+            success: function (data) {
+                alert("success")
+            }
+        });
+
+        /*var url = "http://localhost:51234/api/historys"
+        $.post(url, object, alert("bum"), 'json');*/
+    }
+
+
+
     var getMarked = function (callback) {
         var url = "http://localhost:51234/api/markeds"
         $.getJSON(url, function (data) {
@@ -45,11 +65,21 @@
     }
 
     //No idea if this follows the proper methods call for $post, maybe third param, the callback function, is unnecessary?
-    var postMarked = function (marked, callback) {
-        var url = "http://localhost:51234/api/markeds"
-        $.post(url, marked, function (data) {
-            callback(data)
-        })
+
+
+    var postMarked = function (object) {
+        var url = "http://localhost:51234/api/markeds";
+        console.log(object);
+        $.ajax({
+            type: 'post',
+            url: url,
+            data: JSON.stringify(object),
+            contentType: "application/json; charset=utf-8",
+            traditional: true,
+            success: function (data) {
+                alert("successfully posted to markeds")
+            }
+        });
     }
 
     var getPostTopics = function (callback) {
@@ -104,7 +134,9 @@
         getAnswers,
         getComments,
         getHistories,
+        postHistories,
         getMarked,
+        postMarked,
         getPostTopics,
         getQuestions,
         getSovaUser,

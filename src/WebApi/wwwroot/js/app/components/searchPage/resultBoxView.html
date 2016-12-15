@@ -1,10 +1,36 @@
 ﻿<!-- col-lg-8 col-lg-offset-2 -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <input id="description" type="text" class="form-control" placeholder="Add a description ..." />
+                    <span class="input-group-btn">
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button  id="saveButton" type="button" class="btn btn-primary" data-dismiss="modal">Save post</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div data-bind="foreach: searchResults">
+    
+
     <div style="border: 5px solid grey" class="container-fluid col-lg-10 col-lg-offset-1">
         <div class="row">
-            <button border: 2px solid yellow" class="btn btn-primary text-left col-xs-2">
+            <div id="postIdContainer" class="invisibleDiv" data-bind="text: postId" type="text" style="display:block"></div>
+            <div style="border: 2px solid yellow" class="btn btn-primary text-left col-xs-2" data-toggle="modal" data-target="#myModal">
                     Save Post
-            </button>
+            </div>
+
             <div style="border: 2px solid green" class="col-xs-10">
                 <h1 data-bind="text: postTitle"></h1>
             </div>

@@ -1,10 +1,24 @@
 ﻿
 <div class="row">
+    <form class="form-group col-xs-12 col-lg-6 col-lg-offset-2" role="search">
+           <div class="input-group">
+                <input id="searchField" type="text" class="form-control" placeholder="Search for posts" />
+                 <span class="input-group-btn">
+                    <button id="myButton" data-bind="click: searchAndPost" class="btn btn-default" type="submit">Search</button>
+                </span>
+            </div>
+        <div class="radio">
+            <label><input type="radio" name="questionsOrAnswers" checked="checked" value="true">Questions</label>
+            <label><input type="radio" name="questionsOrAnswers" value="false">Answers</label>
+        </div>
+        
+    </form>     
+</div>
+<div class="row">
     <div class="col-xs-12 col-lg-3 col-lg-push-9">
         <word-cloud></word-cloud>
     </div>
     <div class="col-xs-12 col-lg-9 col-lg-pull-3">
         <result-box></result-box>
     </div>
-    
 </div>

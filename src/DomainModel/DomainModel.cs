@@ -34,6 +34,7 @@ namespace DomainModel
     {
         public int MarkedId { get; set; }
         public int PostId { get; set; }
+        public int SovaUserId { get; set; }
         public string Note { get; set; }
         public DateTime Date { get; set; }
     }
