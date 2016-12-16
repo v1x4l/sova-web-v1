@@ -157,6 +157,7 @@ namespace Tests
         }
         
         [Fact]
+
         public void getListFromProcedure() {
             IList<SearchResult> searchResults;
 
@@ -171,8 +172,8 @@ namespace Tests
                 Assert.NotNull(searchResults);
                 Assert.NotEmpty(searchResults);
                 Assert.IsType<List<SearchResult>>(searchResults);
-                Assert.Equal(489936, searchResults.First().PostId);
-                Assert.Equal(14633709, searchResults.Last().PostId);
+                Assert.Equal(27633063, searchResults.First().PostId);
+                Assert.Equal(2565924, searchResults.Last().PostId);
             }
             
           }
