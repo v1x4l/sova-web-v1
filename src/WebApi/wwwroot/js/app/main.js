@@ -10,7 +10,6 @@
             "bootstrap": "lib/bootstrap/dist/js/bootstrap.min",
             "toastr": "lib/toastr/toastr.min",
             "jqcloud": "lib/jqcloud-1.0.4",
-
             "dataservice": "app/services/dataService",
             "postman": "app/services/postman",
             "config": "app/config"
@@ -42,13 +41,13 @@
         });
 
         ko.components.register("recent-searches", {
-            viewModel: { require: 'app/components/recentSearches/recentSearches' },
-            template: { require: 'text!app/components/recentSearches/recentSearchesView.html' }
+            viewModel: { require: 'app/components/myPage/recentSearches' },
+            template: { require: 'text!app/components/myPage/recentSearchesView.html' }
         });
 
         ko.components.register("saved-posts", {
-            viewModel: { require: 'app/components/savedPosts/savedPosts' },
-            template: { require: 'text!app/components/savedPosts/savedPostsView.html' }
+            viewModel: { require: 'app/components/myPage/savedPosts' },
+            template: { require: 'text!app/components/myPages/savedPostsView.html' }
         });
 
         ko.components.register("person-list", {

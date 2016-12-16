@@ -1,4 +1,4 @@
-﻿define(['knockout', 'dataservice', 'postman', 'config', 'jqcloud'],
+﻿define(['knockout', 'dataservice', 'config', 'jqcloud'],
     function (ko, dataService, postman, config) {
         return function () {
             var wordList = ko.observableArray([]);

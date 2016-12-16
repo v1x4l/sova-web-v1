@@ -1,5 +1,5 @@
-﻿define(['knockout', 'dataservice', 'postman', 'config', 'bootstrap'],
-    function (ko, dataService, postman, config) {
+﻿define(['knockout', 'dataservice', 'config', 'bootstrap'],
+    function (ko, dataService, config) {
         return function () {
             var searchResults = ko.observableArray([]);
 
