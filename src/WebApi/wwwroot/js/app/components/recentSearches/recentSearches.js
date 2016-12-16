@@ -12,17 +12,9 @@
             ]
             */
 
-
-
             dataService.getHistories(function (data) {
-                //data.userList.forEach(user => users.push(user))
-                //users = ko.observableArray(data.userList);
 
                 histories(data.historyList);
-
-                //Has no dateTime attribute
-                
-                console.log(histories);
             });
 
             return {

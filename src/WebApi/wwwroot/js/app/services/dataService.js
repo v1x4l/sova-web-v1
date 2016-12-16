@@ -39,7 +39,6 @@
 
     var postHistories = function (object) {
         var url = "http://localhost:51234/api/historys";
-        console.log(object);
         $.ajax({
             type: 'post',
             url: url,
@@ -47,7 +46,7 @@
             contentType: "application/json; charset=utf-8",
             traditional: true,
             success: function (data) {
-                alert("success")
+                console.log("success")
             }
         });
 
@@ -74,7 +73,7 @@
             contentType: "application/json; charset=utf-8",
             traditional: true,
             success: function (data) {
-                alert("successfully posted to markeds")
+                console.log("successfully posted to markeds")
             }
         });
     }

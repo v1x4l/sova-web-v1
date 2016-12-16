@@ -16,7 +16,6 @@
 
             dataService.getMarked(function (data) {
                 marked(data.markedList);
-                console.log(marked);
             });
 
             return {

@@ -20,7 +20,6 @@
                     });
                     temp = temp.slice(0, 6);
                     wordList(temp);
-                    //wordList.push(temp.slice(0, 6));
                 });
                 });
             

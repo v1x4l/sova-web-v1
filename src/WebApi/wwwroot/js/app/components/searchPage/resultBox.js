@@ -3,29 +3,14 @@
         return function () {
             var searchResults = ko.observableArray([]);
 
-            var setResults = function (array) {
-                searchResults(array);
-                console.log(searchResult());
-            };
 
-            var alarm2 = function () {
-                alarm("foreach called")
-            }
-            /*
-            dataService.getSearchResults("java script function", "true", function (data) {
-                console.log(data.searchResultList);
-                searchResults(data.searchResultList);
-                console.log(searchResults());
-            });
-            */
+
             $("#myButton").click(function () {
                 var searchVal = $("#searchField").val();
                 var radioVal = $("input[name=questionsOrAnswers]:checked").val();
 
                 dataService.getSearchResults(searchVal, radioVal, function (data) {
-                    console.log(data.searchResultList);
                     searchResults(data.searchResultList);
-                    console.log(searchResults());
                 });
             });
 
@@ -51,9 +36,7 @@
             });
 
             return {
-                searchResults,
-                setResults,
-                alarm2
+                searchResults
 
             };
         };
