@@ -10,7 +10,6 @@
             "bootstrap": "lib/bootstrap/dist/js/bootstrap.min",
             "toastr": "lib/toastr/toastr.min",
             "jqcloud": "lib/jqcloud-1.0.4",
-
             "dataservice": "app/services/dataService",
             "postman": "app/services/postman",
             "config": "app/config"

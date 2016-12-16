@@ -1,5 +1,5 @@
-﻿define(['knockout', 'dataservice', 'postman', 'config'],
-    function (ko, dataService, postman, config) {
+﻿define(['knockout', 'dataservice', 'config'],
+    function (ko, dataService, config) {
         return function () {
             var marked = ko.observableArray([]);
 
@@ -11,8 +11,6 @@
 
             ]
             */
-            
-
 
             dataService.getMarked(function (data) {
                 marked(data.markedList);
