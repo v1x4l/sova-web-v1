@@ -175,7 +175,7 @@ namespace WebApi.JsonModels
             return new MarkedModel
             {
                 Url = url.Link(Config.MarkedRoute, new { id = marked.MarkedId }),
-                MarkedId = marked.PostId,
+                MarkedId = marked.MarkedId,
                 SovaUserId = marked.SovaUserId,
                 PostId = marked.PostId,
                 Note = marked.Note,
