@@ -1,5 +1,7 @@
 ﻿<ol class="list-group" data-bind="foreach: marked">
-    <li class="list-group-item" data-bind="text: note"></li>
+    <li class="list-group-item">
+        postId: <span data-bind="text: postId"></span>
+        , note: <span data-bind="text: note"></span>
+    </li>
+    
 </ol>
-
-<a href="#" data-bind="click: goToPersons">Persons</a>

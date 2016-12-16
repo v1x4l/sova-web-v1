@@ -64,9 +64,6 @@
         })
     }
 
-    //No idea if this follows the proper methods call for $post, maybe third param, the callback function, is unnecessary?
-
-
     var postMarked = function (object) {
         var url = "http://localhost:51234/api/markeds";
         console.log(object);

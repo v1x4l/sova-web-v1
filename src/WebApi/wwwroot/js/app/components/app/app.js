@@ -3,7 +3,6 @@
         var menuItems = [
             { title: config.menuItems.search, component: 'search-page' },
             { title: config.menuItems.mypage, component: 'recent-searches' },
-            { title: config.menuItems.persons, component: 'person-list' }
         ];
         var currentComponent = ko.observable();
         var selectedMenu = ko.observable();

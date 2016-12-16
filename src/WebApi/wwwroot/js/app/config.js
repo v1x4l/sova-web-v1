@@ -7,7 +7,6 @@
         },
         menuItems: {
             mypage: "MyPage",
-            persons: "Persons",
             search: "Search"
         }
     };
