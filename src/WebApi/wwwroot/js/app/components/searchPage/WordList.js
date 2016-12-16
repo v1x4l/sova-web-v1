@@ -2,6 +2,7 @@
     function (ko, dataService, postman, config) {
         return function () {
             var wordList = ko.observableArray([]);
+
             makeCloud = function () {
                 $("#wordCloud").jQCloud(wordList);
             };
@@ -25,7 +26,6 @@
             
 
             return {
-                makeCloud,
                 wordList
             };
         };
