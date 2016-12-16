@@ -47,7 +47,7 @@
 
         ko.components.register("saved-posts", {
             viewModel: { require: 'app/components/myPage/savedPosts' },
-            template: { require: 'text!app/components/myPages/savedPostsView.html' }
+            template: { require: 'text!app/components/myPage/savedPostsView.html' }
         });
 
         ko.components.register("person-list", {
