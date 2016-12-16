@@ -42,13 +42,13 @@
         });
 
         ko.components.register("recent-searches", {
-            viewModel: { require: 'app/components/recentSearches/recentSearches' },
-            template: { require: 'text!app/components/recentSearches/recentSearchesView.html' }
+            viewModel: { require: 'app/components/myPage/recentSearches' },
+            template: { require: 'text!app/components/myPage/recentSearchesView.html' }
         });
 
         ko.components.register("saved-posts", {
-            viewModel: { require: 'app/components/savedPosts/savedPosts' },
-            template: { require: 'text!app/components/savedPosts/savedPostsView.html' }
+            viewModel: { require: 'app/components/myPage/savedPosts' },
+            template: { require: 'text!app/components/myPages/savedPostsView.html' }
         });
 
         ko.components.register("person-list", {
