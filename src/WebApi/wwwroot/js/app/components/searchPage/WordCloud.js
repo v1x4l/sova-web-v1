@@ -4,7 +4,7 @@
             var wordList = ko.observableArray([]);
             makeCloud = function () {
                 $("#wordCloud").jQCloud(wordList);
-            }
+            };
 
             
             

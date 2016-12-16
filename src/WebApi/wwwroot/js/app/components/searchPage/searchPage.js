@@ -6,7 +6,7 @@
             var searchAndPost = function () {
                 var searchVal = $("#searchField").val();
                 var radioVal = $("input[name=questionsOrAnswers]:checked").val();
-                
+
                 var obj = {
                     "SovaUserId": 1,
                     "SearchText": searchVal,
@@ -21,7 +21,7 @@
                     searchResults.push(data.searchResultList);
                 });
 
-            }
+            };
 
 
 
